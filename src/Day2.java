@@ -69,8 +69,6 @@ public class Day2 {
 		return null;
 	}
 	
-	
-	
 	public static void main(String[] args) {
 		Day2 day2Part1 = new Day2("inputs/");
 		System.out.println("Part One: " + day2Part1.runIntcode());
