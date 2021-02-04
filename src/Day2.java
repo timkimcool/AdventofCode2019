@@ -21,16 +21,17 @@ public class Day2 {
 			intcode = Stream.of(scan.nextLine().split(","))
 					.map(Integer::parseInt)
 					.collect(Collectors.toList());
+			scan.close();
 		} catch (FileNotFoundException ex) {
 			System.out.println("Error: " + ex);
 		}
 	}
 	
-	public Integer runIntcode() {
+	public int runIntcode() {
 		return runIntcode(INPUT_ONE, INPUT_TWO);
 	}
 	
-	public Integer runIntcode(int replace1, int replace2) {
+	public int runIntcode(int replace1, int replace2) {
 		intcode.set(1, replace1);
 		intcode.set(2, replace2);
 		List<Integer> copyIntcode = new ArrayList<>(intcode);
@@ -50,14 +51,14 @@ public class Day2 {
 			i += 4;
 		}
 		
-		return null;
+		return -1;
 	}
 	
-	private Integer getIntcodeValue(int i, List<Integer> intcode) {
+	private int getIntcodeValue(int i, List<Integer> intcode) {
 		return intcode.get(intcode.get(i));
 	}
 	
-	public Integer findNounVerb() {
+	public int findNounVerb() {
 		for (int i = 0; i <= 99; i++) {
 			for (int j = 0; j <= 99; j++) {
 				if (runIntcode(i, j) == OUTPUT) {
@@ -65,16 +66,15 @@ public class Day2 {
 				}
 			}
 		}
-		
-		return null;
+		return -1;
 	}
 	
 	public static void main(String[] args) {
-		Day2 day2Part1 = new Day2("inputs/");
-		System.out.println("Part One: " + day2Part1.runIntcode());
+		Day2 part1 = new Day2("inputs/");
+		System.out.println("Part One: " + part1.runIntcode());
 		
-		Day2 day2Part2 = new Day2("inputs/");
-		System.out.println("Part Two: " + day2Part2.findNounVerb());
+		Day2 part2 = new Day2("inputs/");
+		System.out.println("Part Two: " + part2.findNounVerb());
 	}
 }
 

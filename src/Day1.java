@@ -19,21 +19,21 @@ public class Day1 {
 		}
 	}
 	
-	public Integer getFuelReqPartOne() {
+	public int getFuelReqPartOne() {
 		return masses.map(mass -> getFuel(mass))
 			.reduce(0, (acc, cur) -> acc + cur);
 	}
 	
-	private Integer getFuel(int mass) {
+	private int getFuel(int mass) {
 		return mass / 3 - 2;
 	}
 	
-	public Integer getFuelReqPartTwo() {
+	public int getFuelReqPartTwo() {
 		return masses.map(mass -> getTotalFuel(mass))
 			.reduce(0, (acc, cur) -> acc + cur);
 	}
 	
-	private Integer getTotalFuel(int mass) {
+	private int getTotalFuel(int mass) {
 		int totalFuel = 0;
 		mass = getFuel(mass);
 		while (mass > 0) {
@@ -43,13 +43,12 @@ public class Day1 {
 		return totalFuel;
 	}
 	
-	
 	public static void main(String[] args) {
-		Day1 day1Part1 = new Day1("inputs/");
-		System.out.println("Part One: " + day1Part1.getFuelReqPartOne());
+		Day1 part1 = new Day1("inputs/");
+		System.out.println("Part One: " + part1.getFuelReqPartOne());
 		
-		Day1 day1Part2 = new Day1("inputs/");
-		System.out.println("Part Two: " + day1Part2.getFuelReqPartTwo());
+		Day1 part2 = new Day1("inputs/");
+		System.out.println("Part Two: " + part2.getFuelReqPartTwo());
 	}
 }
 
