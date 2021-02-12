@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +14,7 @@ public class Day3 {
 	
 	public Day3(String path) {
 		try {
-			file = new File (path + this.getClass().getSimpleName() + ".txt");
+			file = new File (path);
 			scan = new Scanner(file);
 			path1 = Arrays.asList(scan.nextLine().split(","));
 			path2 = Arrays.asList(scan.nextLine().split(","));
@@ -25,7 +24,7 @@ public class Day3 {
 		}
 	}
 	
-	private Map<String, Integer> getCoordeAndSteps(List<String> path) {
+	private Map<String, Integer> getCoordAndSteps(List<String> path) {
 		Map<String, Integer> coordStepMap = new HashMap<>();
 		int x = 0;
 		int y = 0;
@@ -49,14 +48,13 @@ public class Day3 {
 	
 	private Map<String, Integer> findOverlap() {
 		Map<String, Integer> overLaps = new HashMap<>();
-		Map<String, Integer> path1Map = getCoordeAndSteps(path1);
-		Map<String, Integer> path2Map = getCoordeAndSteps(path2);
+		Map<String, Integer> path1Map = getCoordAndSteps(path1);
+		Map<String, Integer> path2Map = getCoordAndSteps(path2);
 		for (String coord : path2Map.keySet()) {
 			if(path1Map.containsKey(coord)) {
 				overLaps.put(coord, path1Map.get(coord) + path2Map.get(coord));
 			}
 		}
-		
 		return overLaps;		
 	}
 	
@@ -80,7 +78,7 @@ public class Day3 {
 	
 	
 	public static void main(String[] args) {
-		Day3 day3 = new Day3("inputs/");
+		Day3 day3 = new Day3("inputs/Day3.txt");
 		System.out.println("Part One: " + day3.getShortestDis());
 		System.out.println("Part Two: " + day3.getLeastSteps());
 		
